@@ -38,6 +38,11 @@ public class HuespedRestController {
 	@Autowired
 	private ServicioService servicioService;
 	
+	@GetMapping("/hola")
+	public String getHello(){
+		return "HOLA MUNDO";
+	}
+	
 	@GetMapping("/rol")
 	public List<Rol> getRoles(){
 		return rolService.getAllRoles();
