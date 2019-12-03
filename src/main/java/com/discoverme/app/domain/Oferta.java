@@ -39,7 +39,6 @@ public class Oferta implements Serializable{
     @Column(name = "descripcion", length = 300)
     private String descripcion;
 
-    
     @Column(name = "fecha_inicio")
     private LocalDate fecha_inicio;
     

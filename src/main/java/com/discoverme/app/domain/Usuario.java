@@ -1,20 +1,18 @@
 package com.discoverme.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * Clase que representa un usuario (dotada de anotaciones de Hibernate para poder mapearla con la BD)
@@ -39,22 +37,30 @@ public class Usuario implements Serializable{
     @Column(name = "procedencia", length = 50)
     private String procedencia;
     
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rol_id")
+//    @NotNull
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "rol_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "rol_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Rol rol;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "perfil_id")
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "perfil_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "perfil_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Perfil perfil;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "foto_id")
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "foto_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "foto_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Foto foto;
-    
-    @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy="id", fetch = FetchType.EAGER)
-    @LazyCollection(LazyCollectionOption.TRUE)
-    private Set<Experiencia> experiencias = new HashSet();
 
     public Usuario() {
     }
@@ -113,14 +119,6 @@ public class Usuario implements Serializable{
 
     public void setFoto(Foto foto) {
         this.foto = foto;
-    }
-
-    public Set<Experiencia> getExperiencias() {
-        return experiencias;
-    }
-
-    public void setExperiencias(Set<Experiencia> experiencias) {
-        this.experiencias = experiencias;
     }
     
 }
