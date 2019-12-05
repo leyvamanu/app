@@ -3,6 +3,7 @@ package com.discoverme.app.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -51,8 +53,7 @@ public class Oferta implements Serializable{
     @Column(name = "hora_fin")
     private LocalTime hora_fin;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "experiencia_id")
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Experiencia experiencia;
 
     public Oferta() {

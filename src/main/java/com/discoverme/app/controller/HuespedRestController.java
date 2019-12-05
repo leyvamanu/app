@@ -26,6 +26,7 @@ import com.discoverme.app.service.RolService;
 import com.discoverme.app.service.ServicioService;
 import com.discoverme.app.service.TipoService;
 import com.discoverme.app.service.UsuarioService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 @RequestMapping("/api")
@@ -57,11 +58,6 @@ public class HuespedRestController {
 
     @Autowired
     private OfertaService ofertaService;
-
-//    @GetMapping("/hola")
-//    public String getHello() {
-//        return "HOLA MUNDO";
-//    }
 
     @GetMapping("/rol")
     public List<Rol> getRoles() {
@@ -123,7 +119,7 @@ public class HuespedRestController {
         }
         return usuario;
     }
-    
+
     @GetMapping("/comentarios")
     public List<Comentario> getComentarios() {
         return comentarioService.getAllComentarios();
@@ -137,5 +133,11 @@ public class HuespedRestController {
     @GetMapping("/ofertas")
     public List<Oferta> getOfertas() {
         return ofertaService.getAllOfertas();
+    }
+
+    @DeleteMapping("/oferta/{id}")
+    public void deleteOferta(@PathVariable int id) {
+        Oferta oferta = ofertaService.getOfertaById(id);
+        ofertaService.deleteOferta(oferta);
     }
 }

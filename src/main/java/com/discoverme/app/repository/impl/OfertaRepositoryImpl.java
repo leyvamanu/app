@@ -52,7 +52,9 @@ public class OfertaRepositoryImpl implements OfertaRepository{
 
     @Override
     public Oferta getOfertaById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Oferta oferta = currentSession.get(Oferta.class, id);
+        return oferta;
     }
 
     @Override
@@ -62,7 +64,8 @@ public class OfertaRepositoryImpl implements OfertaRepository{
 
     @Override
     public void deleteOferta(Oferta oferta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.remove(oferta);
     }
     
 
