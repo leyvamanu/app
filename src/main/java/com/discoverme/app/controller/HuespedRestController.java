@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.discoverme.app.domain.Experiencia;
 import com.discoverme.app.domain.Foto;
+import com.discoverme.app.domain.Oferta;
 import com.discoverme.app.domain.Perfil;
 import com.discoverme.app.domain.Rol;
 import com.discoverme.app.domain.Servicio;
@@ -19,6 +20,7 @@ import com.discoverme.app.domain.Usuario;
 import com.discoverme.app.service.ComentarioService;
 import com.discoverme.app.service.ExperienciaService;
 import com.discoverme.app.service.FotoService;
+import com.discoverme.app.service.OfertaService;
 import com.discoverme.app.service.PerfilService;
 import com.discoverme.app.service.RolService;
 import com.discoverme.app.service.ServicioService;
@@ -52,6 +54,9 @@ public class HuespedRestController {
 
     @Autowired
     private PerfilService perfilService;
+
+    @Autowired
+    private OfertaService ofertaService;
 
 //    @GetMapping("/hola")
 //    public String getHello() {
@@ -127,5 +132,10 @@ public class HuespedRestController {
     @GetMapping("/perfiles")
     public List<Perfil> getPerfiles() {
         return perfilService.getAllPerfiles();
+    }
+
+    @GetMapping("/ofertas")
+    public List<Oferta> getOfertas() {
+        return ofertaService.getAllOfertas();
     }
 }
