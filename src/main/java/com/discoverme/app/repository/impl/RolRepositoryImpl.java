@@ -36,7 +36,8 @@ public class RolRepositoryImpl implements RolRepository {
     @Override
     public Rol getRolByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Rol rol = currentSession.get(Rol.class, nombre);
+        Query<Rol> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Rol.class);
+        Rol rol = theQuery.getSingleResult();
         return rol;
     }
 

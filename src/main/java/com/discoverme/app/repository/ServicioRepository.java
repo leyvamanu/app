@@ -13,5 +13,6 @@ public interface ServicioRepository {
     Servicio getServicioById (Integer id);
     Servicio getServicioByNombre(String nombre);
     void addServicio (Servicio servicio);
+    void updateServicio(Servicio servicio);
     void deleteServicio(Servicio servicio);
 }

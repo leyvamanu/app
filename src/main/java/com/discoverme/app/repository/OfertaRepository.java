@@ -11,7 +11,6 @@ import java.util.List;
  */
 public interface OfertaRepository {
     List<Oferta>getAllOfertas();
-    List<Oferta>getOfertasServicios();
     List<Oferta> getOfertasByExperiencia(Experiencia experiencia);
     Oferta getOfertaByCodigo(String codigo);
     Oferta getOfertaByNombre(String nombre);

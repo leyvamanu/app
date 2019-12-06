@@ -172,8 +172,7 @@ public class HuespedRestController {
         comentarioService.deleteComentario(comentario);
     }
     //Comentarios /////////////////////////
-   
-    
+
     @GetMapping("/perfiles")
     public List<Perfil> getPerfiles() {
         return perfilService.getAllPerfiles();

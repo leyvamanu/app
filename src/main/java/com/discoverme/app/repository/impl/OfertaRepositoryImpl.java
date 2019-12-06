@@ -31,23 +31,27 @@ public class OfertaRepositoryImpl implements OfertaRepository{
     }
 
     @Override
-    public List<Oferta> getOfertasServicios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<Oferta> getOfertasByExperiencia(Experiencia experiencia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where experiencia = "+ experiencia.getId(), Oferta.class);
+        List<Oferta> ofertas = theQuery.getResultList();
+        return ofertas;
     }
 
     @Override
     public Oferta getOfertaByCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where codigo = "+ codigo, Oferta.class);
+        Oferta oferta = theQuery.getSingleResult();
+        return oferta;
     }
 
     @Override
     public Oferta getOfertaByNombre(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Oferta.class);
+        Oferta oferta = theQuery.getSingleResult();
+        return oferta;
     }
 
     @Override

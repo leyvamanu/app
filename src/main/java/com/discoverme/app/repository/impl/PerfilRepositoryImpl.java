@@ -31,7 +31,10 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 
     @Override
     public Perfil getPerfilByNombre(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Perfil> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Perfil.class);
+        Perfil perfil = theQuery.getSingleResult();
+        return perfil;
     }
 
     @Override

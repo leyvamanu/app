@@ -26,26 +26,29 @@ public class FotoRepositoryImpl implements FotoRepository {
 
     @Override
     public Foto getFotoById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        Session currentSession = entityManager.unwrap(Session.class);
+        Foto foto = currentSession.get(Foto.class, id);
+        return foto;
     }
 
     @Override
     public Foto getFotoByNombre(String nombre) {
-        // TODO Auto-generated method stub
-        return null;
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Foto> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Foto.class);
+        Foto fotos = theQuery.getSingleResult();
+        return fotos;
     }
 
     @Override
     public void addFoto(Foto foto) {
-        // TODO Auto-generated method stub
-
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.save(foto);
     }
 
     @Override
     public void deleteFoto(Foto foto) {
-        // TODO Auto-generated method stub
-
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.remove(foto);
     }
 
     @Override

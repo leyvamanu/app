@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface OfertaService {
     List<Oferta> getAllOfertas();
-    List<Oferta>getOfertasServicios();
     List<Oferta> getOfertasByExperiencia(Experiencia experiencia);
     Oferta getOfertaByNombre(String nombre);
     Oferta getOfertaById(Integer id);

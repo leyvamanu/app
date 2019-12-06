@@ -15,9 +15,11 @@ import java.util.List;
  * @author Manuel
  */
 public interface UsuarioRepository {
+    List<Usuario> getAllUsuarios();
     List<Usuario> getUsuariosByRol(Rol rol);
     List<Usuario> getUsuariosByPerfil(Perfil rol);
     Usuario getUsuarioById(String id);
     void addUsuario(Usuario usuario);
+    void updateUsuario(Usuario usuario);
     void deleteUsuario(Usuario usuario);
 }

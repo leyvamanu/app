@@ -38,17 +38,6 @@ public class OfertaServiceImpl implements OfertaService {
     }
 
     /**
-     * Funcion que devuelve ofertas por servicio
-     * @author Jose Luis Sanchez Escoda
-     * @return
-     *
-     */
-    @Override
-    public List<Oferta> getOfertasServicios() {
-        return ofertaRepository.getOfertasServicios();
-    }
-
-    /**
      * Funcion que devuelve ofertas por experiencia
      * @author Jose Luis Sanchez Escoda
      * @param experiencia

@@ -16,5 +16,6 @@ public interface ExperienciaRepository {
     Experiencia getExperienciaByNombre(String nombre);
     List<Experiencia> getExperienciaByUsuario(Usuario usuario);
     void addExperiencia(Experiencia experiencia);
+    void updateExperiencia(Experiencia experiencia);
     void deleteExperiencia(Experiencia experiencia);
 }
