@@ -17,11 +17,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-/**
- * Clase que representa un perfil de huesped (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "perfiles")
 public class Perfil implements Serializable {

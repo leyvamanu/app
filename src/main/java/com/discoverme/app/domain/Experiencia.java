@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,18 +17,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-/**
- * Clase que representa un experiencia/actividad (dotada de anotaciones de
- * Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "experiencias")
 public class Experiencia implements Serializable {
@@ -85,14 +76,6 @@ public class Experiencia implements Serializable {
     @LazyCollection(LazyCollectionOption.TRUE)
     @JoinTable(name = "experiencias_fotos", joinColumns = @JoinColumn(name = "experiencia_id"), inverseJoinColumns = @JoinColumn(name = "fotos_id"))
     private List<Foto> fotos = new ArrayList();
-
-//    @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "id", fetch = FetchType.EAGER)
-//    @LazyCollection(LazyCollectionOption.TRUE)
-//    private Set<Oferta> ofertas = new HashSet();
-//
-//    @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "id", fetch = FetchType.EAGER)
-//    @LazyCollection(LazyCollectionOption.TRUE)
-//    private Set<Comentario> comentarios = new HashSet();
 
     public Experiencia() {
     }
@@ -208,21 +191,5 @@ public class Experiencia implements Serializable {
     public void setFotos(List<Foto> fotos) {
         this.fotos = fotos;
     }
-//
-//    public Set<Oferta> getOfertas() {
-//        return ofertas;
-//    }
-//
-//    public void setOfertas(Set<Oferta> ofertas) {
-//        this.ofertas = ofertas;
-//    }
-//
-//    public Set<Comentario> getComentarios() {
-//        return comentarios;
-//    }
-//
-//    public void setComentarios(Set<Comentario> comentarios) {
-//        this.comentarios = comentarios;
-//    }
 
 }

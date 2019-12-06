@@ -41,8 +41,9 @@ public class ExperienciaRepositoryImpl implements ExperienciaRepository {
 
     @Override
     public Experiencia getExperienciaById(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+        Session currentSession = entityManager.unwrap(Session.class);
+        Experiencia experiencia = currentSession.get(Experiencia.class, id);
+        return experiencia;
     }
 
     @Override

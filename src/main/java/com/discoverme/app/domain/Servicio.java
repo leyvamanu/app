@@ -1,6 +1,5 @@
 package com.discoverme.app.domain;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,11 +19,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-/**
- * Clase que representa un servicio del hotel (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "servicios")
 public class Servicio implements Serializable{
@@ -56,10 +50,6 @@ public class Servicio implements Serializable{
     
     @Column(name = "hora_fin")
     private LocalTime hora_fin;
-    
-    /*@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;*/
 
     @Column(name = "disponible")
     private boolean disponible;
@@ -135,14 +125,6 @@ public class Servicio implements Serializable{
     public void setHora_fin(LocalTime hora_fin) {
         this.hora_fin = hora_fin;
     }
-    
-    /*public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }*/
 
     public boolean isDisponible() {
         return disponible;
@@ -159,8 +141,5 @@ public class Servicio implements Serializable{
     public void setFotos(List<Foto> fotos) {
         this.fotos = fotos;
     }
-   
-   
-
     
 }

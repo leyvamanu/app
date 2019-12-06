@@ -26,28 +26,41 @@ public class ComentarioRepositoryImpl implements ComentarioRepository {
     public List<Comentario> getAllComentarios() {
         Session currentSession = entityManager.unwrap(Session.class);
         Query<Comentario> theQuery = currentSession.createQuery("from Comentario", Comentario.class);
-        List<Comentario> comentario = theQuery.getResultList();
-        return comentario;
+        List<Comentario> comentarios = theQuery.getResultList();
+        return comentarios;
     }
 
     @Override
     public List<Comentario> getComentariosByIdExperiencia(Experiencia experiencia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Comentario> theQuery = currentSession.createQuery("from Comentario where experiencia = "+ experiencia.getId(), Comentario.class);
+        List<Comentario> comentarios = theQuery.getResultList();
+        return comentarios;
     }
 
     @Override
     public Comentario getComentarioById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        Comentario comentario = currentSession.get(Comentario.class, id);
+        return comentario;
     }
 
     @Override
     public void addComentario(Comentario comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.save(comentario);
     }
 
     @Override
     public void deleteComentario(Comentario comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.remove(comentario);
+    }
+
+    @Override
+    public void updateComentario(Comentario comentario) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.update(comentario);
     }
 
 

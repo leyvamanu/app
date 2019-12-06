@@ -63,21 +63,17 @@ public class ComentarioServiceImpl implements ComentarioService {
     /**
     * Funcion que accede al repositorio de comentarios y guarda un comentario 
     * en la BD, crea el objeto comentaro a partir de los parametros recibidos
-    * @param idExperiencia Identificador del experiencia al cual pertenece el comentario a crear
-    * @param titulo Titulo del comentario
-    * @param puntuacion Puntuacion del comentario
-    * @param comentario Texto del comentario
-    * @param usuario Identificador del usuario al cual pertenece el comentario a crear
+    * @param comentario comentario
     * @author Manuel Leyva    
      */
     @Override
-    public void addComentario(Integer idExperiencia, String titulo, String puntuacion, String comentario, String usuario) {
+    public void addComentario(Comentario comentario) {
         Comentario c = new Comentario();
-        c.setExperiencia(experienciaRepository.getExperienciaById(idExperiencia));
-        c.setComentario(comentario);
-        c.setPuntos(Integer.parseInt(puntuacion));
-        c.setTitulo(titulo);
-        c.setUsuario(usuarioRepository.getUsuarioById(usuario));
+        c.setExperiencia(experienciaRepository.getExperienciaById(comentario.getExperiencia().getId()));
+        c.setComentario(comentario.getComentario());
+        c.setPuntos(comentario.getPuntos());
+        c.setTitulo(comentario.getTitulo());
+        c.setUsuario(usuarioRepository.getUsuarioById(comentario.getUsuario().getId()));
         LocalDate fecha = LocalDate.now();
         c.setFecha(fecha);
         comentarioRepository.addComentario(c);
@@ -95,20 +91,16 @@ public class ComentarioServiceImpl implements ComentarioService {
 
     /**
      * Funcion que actualiza comentarios
-     * @param id
-     * @param titulo
-     * @param puntuacion
      * @param comentario
      * @author Manuel Leyva
      */
     @Override
-    public void updateComentario(Integer id, String titulo, Integer puntuacion, String comentario) {
-        Comentario coment = comentarioRepository.getComentarioById(id);
-        coment.setTitulo(titulo);
-        coment.setPuntos(puntuacion);
-        coment.setComentario(comentario);
-        //coment.setFecha(LocalDate.MIN);
-        comentarioRepository.addComentario(coment);
+    public void updateComentario(Comentario comentario) {
+        Comentario c = comentarioRepository.getComentarioById(comentario.getId());
+        c.setTitulo(comentario.getTitulo());
+        c.setPuntos(comentario.getPuntos());
+        c.setComentario(comentario.getComentario());
+        comentarioRepository.addComentario(c);
     }
 
 }

@@ -9,11 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-/**
- * Clase que representa una foto (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "fotos")
 public class Foto implements Serializable {

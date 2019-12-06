@@ -27,6 +27,10 @@ import com.discoverme.app.service.ServicioService;
 import com.discoverme.app.service.TipoService;
 import com.discoverme.app.service.UsuarioService;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api")
@@ -120,11 +124,56 @@ public class HuespedRestController {
         return usuario;
     }
 
+    //Comentarios /////////////////////////
     @GetMapping("/comentarios")
-    public List<Comentario> getComentarios() {
-        return comentarioService.getAllComentarios();
+    public List<Comentario> getComentarios(@RequestParam(value = "experiencia", required = false) Integer id) {
+        List<Comentario> comentarios = null;
+        if(id != null){
+            Experiencia experiencia = experienciaService.getExperienciaById(id);
+            if (experiencia == null) {
+                throw new RuntimeException("Experiencia id not found -" + id);
+            }
+            comentarios = comentarioService.getComentariosByIdExperiencia(experiencia);
+        }else{
+            comentarios = comentarioService.getAllComentarios();
+        }
+        return comentarios;
     }
 
+    @GetMapping("/comentarios/{id}")
+    public Comentario getComentarioById(@PathVariable Integer id) {
+        Comentario comentario = comentarioService.getComentarioById(id);
+        if (comentario == null) {
+            throw new RuntimeException("Comentario id not found -" + id);
+        }
+        return comentario;
+    }
+
+    @PostMapping("/comentarios")
+    public void addComentario(@RequestBody Comentario comentario) {
+        comentarioService.addComentario(comentario);
+    }
+
+    @PutMapping("/comentarios")
+    public void updateComentario(@RequestBody Comentario comentario) {
+        Comentario c = comentarioService.getComentarioById(comentario.getId());
+        if (c == null) {
+            throw new RuntimeException("Comentario id not found -" + comentario.getId());
+        }
+        comentarioService.updateComentario(comentario);
+    } 
+    
+    @DeleteMapping("/comentarios/{id}")
+    public void deleteComentario(@PathVariable int id) {
+        Comentario comentario = comentarioService.getComentarioById(id);
+        if (comentario == null) {
+            throw new RuntimeException("Comentario id not found -" + id);
+        }
+        comentarioService.deleteComentario(comentario);
+    }
+    //Comentarios /////////////////////////
+   
+    
     @GetMapping("/perfiles")
     public List<Perfil> getPerfiles() {
         return perfilService.getAllPerfiles();

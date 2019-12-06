@@ -59,7 +59,8 @@ public class OfertaRepositoryImpl implements OfertaRepository{
 
     @Override
     public void addOferta(Oferta oferta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.save(oferta);
     }
 
     @Override
@@ -67,7 +68,5 @@ public class OfertaRepositoryImpl implements OfertaRepository{
         Session currentSession = entityManager.unwrap(Session.class);
         currentSession.remove(oferta);
     }
-    
-
 
 }

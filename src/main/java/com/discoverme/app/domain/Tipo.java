@@ -9,12 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
-/**
- * Clase que representa un tipo de expèriencia (preferencias) (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "tipos")
 public class Tipo implements Serializable {
@@ -46,6 +40,5 @@ public class Tipo implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

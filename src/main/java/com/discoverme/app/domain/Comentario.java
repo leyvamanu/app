@@ -2,25 +2,17 @@ package com.discoverme.app.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
-/**
- * Clase que representa un comentario (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "comentarios")
 public class Comentario implements Serializable{
@@ -39,11 +31,11 @@ public class Comentario implements Serializable{
     private String comentario;
     
     @NotNull
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Experiencia experiencia;
     
     @NotNull
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Usuario usuario;
 
     @NotNull
@@ -113,5 +105,4 @@ public class Comentario implements Serializable{
         this.fecha = fecha;
     }
 
-    
 }

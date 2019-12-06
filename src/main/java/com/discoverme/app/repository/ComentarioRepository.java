@@ -15,4 +15,5 @@ public interface ComentarioRepository {
     Comentario getComentarioById(Integer id);
     void addComentario(Comentario comentario);
     void deleteComentario(Comentario comentario);
+    void updateComentario(Comentario comentario);
 }

@@ -3,28 +3,21 @@ package com.discoverme.app.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-/**
- * Clase que representa una oferta (dotada de anotaciones de Hibernate para poder mapearla con la BD)
- *
- * @author Manuel Leyva
- */
 @Entity
 @Table(name = "ofertas")
 public class Oferta implements Serializable{
-@Id
+    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
@@ -130,6 +123,5 @@ public class Oferta implements Serializable{
     public void setExperiencia(Experiencia experiencia) {
         this.experiencia = experiencia;
     }
-    
     
 }

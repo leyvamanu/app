@@ -12,7 +12,7 @@ public interface ComentarioService {
     List<Comentario> getAllComentarios();
     List<Comentario> getComentariosByIdExperiencia(Experiencia experiencia);
     Comentario getComentarioById(Integer id);
-    void addComentario(Integer idExperiencia, String titulo, String puntuacion, String comentario,String usuario);
+    void addComentario(Comentario comentario);
     void deleteComentario(Comentario comentario);
-    void updateComentario(Integer id,String titulo,Integer puntuacion,String comentario);
+    void updateComentario(Comentario comentario);
 }
