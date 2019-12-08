@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Noto+Serif');
+
+body{
+background-color: #E1E8EE;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+padding-top: 100px;
+overflow-x: hidden;
+}
+
+.logo {
+color: rgba(85, 153, 194, 1);
+font-size: 25px;
+font-family: 'Noto Serif', serif;
+font-family: 'Kaushan Script', cursive;
+text-decoration:none;
+margin-right: 30px;
+}
+
+.logo:hover{
+	color: #c5d2df;
+	margin-right: 30px;
+}
+
+a:link{
+	text-decoration: none;
+}
+
+.info{
+	text-align:center;
+	padding: 20px
+}
+
+.parrafo_texto{
+	padding-top: 65px;
+}
+
+.foto {
+  box-sizing: border-box;
+}
+
+.columna {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+
+.fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.caja-texto{
+	padding: 5px 10px 5px 15px;
+	margin: auto;
+	width: 250px;
+}
+
+.imagen{
+margin:9px auto auto auto;
+}
+
+.mr-r {
+  margin-right: 3px !important;
+}
+
+.area {
+    margin-left: 50px;
+}
+
+.img-avatar{
+    width: 100px; height: 100px;
+}
+
+.info{
+     text-align: center;
+}
+
+.centrar{
+    display: flex;
+    align-items: center;
+    padding-left: 29px;
+    padding-right: 20px;
+    padding-bottom: 18px;
+}

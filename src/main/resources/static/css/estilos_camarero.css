@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-abr-2019, 22:35:02
+    Author     : Carlos Litwiñiuk Zarza
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Noto+Serif');
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+body{
+    background-color: #E1E8EE;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+    padding-top: 100px;
+    overflow-x: hidden;
+}
+
+.logo {
+    color: rgba(85, 153, 194, 1);
+    font-size: 25px;
+    font-family: 'Noto Serif', serif;
+    font-family: 'Kaushan Script', cursive;
+    text-decoration:none;
+    margin-right: 30px;
+}
+
+.logo:hover{
+    color: #c5d2df;
+    margin-right: 30px;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.espacio {
+    padding: 47px 0px 0px 20px
+}
+
+img{
+    width: 150px; height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transition: all .2s ease-in-out;
+}
+
+.area {
+    margin-left: 50px;
+}
+
+.info{
+     text-align: center;
+}
+
+
+ 
