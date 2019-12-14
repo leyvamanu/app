@@ -22,9 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,7 +67,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView index(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("ColaboradorInicio");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -97,7 +98,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/")
     public ModelAndView getExperiencias(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorListadoExperiencias");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -112,7 +113,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/eliminar/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/eliminar/{id}")
     public String deleteExperiencia(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (ComprobarRol.comprobar(usuario, ROL)) {
@@ -128,7 +129,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/{id}/eliminar", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/{id}/eliminar")
     public String deleteWhenEditExperiencia(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (ComprobarRol.comprobar(usuario, ROL)) {
@@ -144,7 +145,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/{id}")
     public ModelAndView editExperiencia(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         ModelAndView modelview = new ModelAndView("ColaboradorEditarExperiencia");
@@ -174,7 +175,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/actualizar/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/listadoExperiencia/actualizar/{id}")
     public String updateExperiencia(@PathVariable("id") Integer id,
             @RequestParam(value = "nombre", required = true) String nombre,
             @RequestParam(value = "fecha_inicio", required = true) String fecha_inicio,
@@ -203,7 +204,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoComentarios/", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoComentarios/")
     public ModelAndView getComentarios(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorListadoComentarios");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -226,7 +227,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoHuespedes/", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoHuespedes/")
     public ModelAndView getHuespedes(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorAppsActivas");
         Perfil soltero = perfilService.getPerfilByNombre("Soltero");
@@ -251,7 +252,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/formularioExperiencia", method = RequestMethod.GET)
+    @GetMapping(value = "/formularioExperiencia")
     public ModelAndView getFormExperiencias(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorFormularioExperiencia");
         modelview.getModelMap().addAttribute("tipos", tipoService.getAllTipos());
@@ -279,7 +280,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/agregarExperiencia", method = RequestMethod.POST)
+    @PostMapping(value = "/agregarExperiencia")
     public String addExperiencia(@RequestParam(value = "nombre", required = true) String nombre,
             @RequestParam(value = "fecha_inicio", required = true) String fecha_inicio,
             @RequestParam(value = "fecha_fin", required = true) String fecha_fin,
@@ -310,7 +311,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/formularioOferta", method = RequestMethod.GET)
+    @GetMapping(value = "/formularioOferta")
     public ModelAndView getFormOferta(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorFormularioOferta");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -331,7 +332,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/agregarOferta", method = RequestMethod.POST)
+    @PostMapping(value = "/agregarOferta")
     public String addOferta(@RequestParam(value = "experiencia", required = true) Integer idExperiencia,
                             @RequestParam(value = "nombre", required = true) String nombre,
                             @RequestParam(value = "fecha_inicio", required = true) String fecha_inicio,
@@ -355,7 +356,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoOfertas/", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoOfertas/")
     public ModelAndView getOfertas(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("ColaboradorListadoOfertas");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -380,7 +381,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoOfertas/eliminar/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoOfertas/eliminar/{id}")
     public String deleteOferta(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (ComprobarRol.comprobar(usuario, ROL)) {
@@ -396,7 +397,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoOfertas/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoOfertas/{id}")
     public ModelAndView editOferta(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         ModelAndView modelview = new ModelAndView("ColaboradorEditarOferta");
@@ -417,7 +418,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoOfertas/actualizar/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/listadoOfertas/actualizar/{id}")
     public String updateOferta(@PathVariable("id") Integer id,
                                @RequestParam(value = "nombre", required = true) String nombre,
                                @RequestParam(value = "fecha_inicio", required = true) String fecha_inicio,
@@ -439,7 +440,7 @@ public class ColaboradorController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoOfertas/{id}/eliminar", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoOfertas/{id}/eliminar")
     public String deleteWhenEditOferta(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (ComprobarRol.comprobar(usuario, ROL)) {

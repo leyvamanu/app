@@ -16,9 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,7 +56,7 @@ public class HuespedController {
     * @return Vista de preferencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView getPreferencias(HttpServletRequest request,HttpServletResponse response){
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         ModelAndView modelview = new ModelAndView("HuespedPreferencias");
@@ -77,13 +78,15 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/")
     public ModelAndView getExperiencias(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("holaaaaaaaaaaa");
         ModelAndView modelview = new ModelAndView("HuespedListadoExperiencias");
         String[] preferencias = (String[]) request.getSession().getAttribute("preferencias");
         String orden = (String) request.getSession().getAttribute("orden");
         modelview.getModelMap().addAttribute("experiencias", experienciaService.getExperienciasByPreferencias(preferencias,orden));
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+        System.out.println("holaaaaaaaaaaa");
         return ComprobarRol.comprobar(modelview, usuario, ROL);
     }
     
@@ -95,7 +98,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/", method = RequestMethod.POST)
+    @PostMapping(value = "/listadoExperiencia/")
     public ModelAndView getExperienciasByPreferencias(@RequestParam(value = "preferencias", required = false) String[] preferencias,HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("HuespedListadoExperiencias");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -117,7 +120,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/precio", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/precio")
     public ModelAndView getExperienciasOrderByPrecio(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("HuespedListadoExperiencias");
         request.getSession().setAttribute("orden", "precio");
@@ -138,7 +141,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/distancia", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/distancia")
     public ModelAndView getExperienciasOrderByDistancia(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("HuespedListadoExperiencias");
         request.getSession().setAttribute("orden", "distancia");
@@ -159,7 +162,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/puntuacion", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/puntuacion")
     public ModelAndView getExperienciasOrderByPuntuacion(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("HuespedListadoExperiencias");
         request.getSession().setAttribute("orden", "puntuacion");
@@ -181,7 +184,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping("/listadoExperiencia/{id}")
+    @GetMapping("/listadoExperiencia/{id}")
     public ModelAndView getExperienciaById(@PathVariable("id") Integer id,HttpServletRequest request,HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("HuespedExperiencia");
         modelview.getModelMap().addAttribute("experiencia", experienciaService.getExperienciaById(id));
@@ -201,7 +204,7 @@ public class HuespedController {
     * @return Vista de listadoExperiencias
     * @author Manuel Leyva    
     */
-    @RequestMapping(value = "/listadoExperiencia/{id}/agregarComentario", method = RequestMethod.POST)
+    @PostMapping(value = "/listadoExperiencia/{id}/agregarComentario")
     public String addComentario(@PathVariable("id") Integer id, 
                                 @RequestParam(value = "titulo", required = true) String titulo, 
                                 @RequestParam(value = "puntuacion", required = true) String puntuacion, 
@@ -221,7 +224,7 @@ public class HuespedController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/{id}/eliminar/{idComentario}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/{id}/eliminar/{idComentario}")
     public String deleteComentario(@PathVariable("id") Integer id, @PathVariable("idComentario") Integer idComentario,HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (ComprobarRol.comprobar(usuario, ROL)) {
@@ -238,7 +241,7 @@ public class HuespedController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/{id}/{idComentario}", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoExperiencia/{id}/{idComentario}")
     public ModelAndView editComentario(@PathVariable("id") Integer id, @PathVariable("idComentario") Integer idComentario, HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         ModelAndView modelview = new ModelAndView("HuespedEditarComentario");
@@ -258,7 +261,7 @@ public class HuespedController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/listadoExperiencia/{id}/{idComentario}/updateComentario", method = RequestMethod.POST)
+    @PostMapping(value = "/listadoExperiencia/{id}/{idComentario}/updateComentario")
     public String updateComentario(@PathVariable("id") Integer id,
             @PathVariable("idComentario") Integer idComentario,
             @RequestParam(value = "titulo", required = true) String titulo,
@@ -279,7 +282,7 @@ public class HuespedController {
     * @return Vista de listadoServicios
     * @author Jose Luis Sanchez Escoda   
     */
-    @RequestMapping(value = "/listadoServicios", method = RequestMethod.GET)
+    @GetMapping(value = "/listadoServicios")
     public ModelAndView getServicios(HttpServletRequest request,HttpServletResponse response){
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         ModelAndView modelview = new ModelAndView("HuespedListadoServicios");
@@ -295,7 +298,7 @@ public class HuespedController {
     * @return vista del servicio
     * @author Jose Luis Sanchez Escoda   
     */
-    @RequestMapping("/listadoServicios/{id}")
+    @GetMapping("/listadoServicios/{id}")
     public ModelAndView getServicioByid(@PathVariable("id") Integer id,HttpServletRequest request,HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("HuespedServicio");
         modelview.getModelMap().addAttribute("servicio", servicioService.getServicioById(id));
@@ -309,7 +312,7 @@ public class HuespedController {
      * @param response
      * @return 
      */
-    @RequestMapping("/listadoOfertas")
+    @GetMapping("/listadoOfertas")
     public ModelAndView getOfertas(HttpServletRequest request,HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("HuespedListadoOfertas");
         //modelview.getModelMap().addAttribute("ofertasServicios", ofertaService.getOfertasServicios());

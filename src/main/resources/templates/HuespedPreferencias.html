@@ -15,7 +15,7 @@
     <body>
         <!--Menú-->
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-            <a class="nav-brand logo" href="/DiscoverMe/huesped/listadoExperiencia/">DiscoverMe</a>
+            <a class="nav-brand logo" href="/huesped/listadoExperiencia/">DiscoverMe</a>
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbar-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,21 +51,21 @@
         
         <!--Encuesta -->
         <div class="container"><br>
-            <form action="/huesped/listadoExperiencia" method="POST">
-                <c:forEach items="${preferencias}" var="preferencia">
-                    <div class="row">
+            <form action="#" th:action="@{/huesped/listadoExperiencia}" th:object="${preferencias}" method="POST">
+                <div th:each="preferencia,iterador : ${preferencias}">
+                    <div class="row" >
                         <div class="col-md-1 ">
-                            <input id="${preferencia.id}" class="switch switch-rect-success" type="checkbox" name="preferencias" value="${preferencia.id}">
-                            <label for="${preferencia.id}" class=""></label>
+                            <input th:id="${preferencia.id}" class="switch switch-rect-success" type="checkbox" name="preferencias" th:value="${preferencia.id}">
+                            <label th:for="${preferencia.id}" class=""></label>
                         </div>
                         <div class="col-md-11">
                             <h4>
-                                <small class="espacio">${preferencia.nombre}</small>
+                                <small class="espacio" th:text="${preferencia.nombre}"></small>
                             </h4>
                         </div>
                     </div>
                     <br>
-                </c:forEach>
+                </div>
                 <p>
                     <input type="submit" value="Aceptar" class="btn btn-primary btn-lg">
                 </p>

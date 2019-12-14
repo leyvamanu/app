@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,7 +57,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView index(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview= new ModelAndView("RecepcionistaInicio");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -70,7 +71,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/formularioUsuarioRecepcionista/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/formularioUsuarioRecepcionista/{id}")
     public ModelAndView getFormAgregarUsuarioHuesped(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("RecepcionistaFormularioHuesped");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -92,7 +93,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/agregarHuesped/", method = RequestMethod.POST)
+    @PostMapping(value = "/agregarHuesped/")
     public String addHuesped(
             @RequestParam(value = "nombre", required = true) String nombre,
             @RequestParam(value = "avatar", required = true) int avatar, 
@@ -120,7 +121,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/datosNewHuesped/{id}/{idp}", method = RequestMethod.GET)
+    @GetMapping(value = "/datosNewHuesped/{id}/{idp}")
     public ModelAndView getDatosNewUsuario(@PathVariable("id") String id,
         @PathVariable("idp") String idp,HttpServletRequest request, HttpServletResponse response) {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -138,7 +139,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/formularioExperiencia", method = RequestMethod.GET)
+    @GetMapping(value = "/formularioExperiencia")
     public ModelAndView getFormExperiencias(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("RecepcionistaFormularioExperiencia");
         modelview.getModelMap().addAttribute("tipos", tipoService.getAllTipos());
@@ -167,7 +168,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/agregarExperiencia/", method = RequestMethod.POST)
+    @PostMapping(value = "/agregarExperiencia/")
     public String addExperiencia(@RequestParam(value = "nombre", required = true) String nombre,
             @RequestParam(value = "fecha_inicio", required = true) String fecha_inicio,
             @RequestParam(value = "fecha_fin", required = true) String fecha_fin,
@@ -198,7 +199,7 @@ public class RecepcionistaController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/recepcionistaValidador", method = RequestMethod.GET)
+    @GetMapping(value = "/recepcionistaValidador")
     public ModelAndView validador(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("RecepcionistaValidador");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -213,7 +214,7 @@ public class RecepcionistaController {
     * @return recepcionistaValidador
     * @author Carlos Litwiñiuk  
     */
-    @RequestMapping(value = "/ofertaValidador", method = RequestMethod.POST)
+    @PostMapping(value = "/ofertaValidador")
     public String validadar(@RequestParam(value = "codigo", required = true) String codigo, 
                         HttpServletRequest request,HttpServletResponse response){
         String redirect = null;
@@ -233,7 +234,7 @@ public class RecepcionistaController {
     * @return Vista de login
     * @author Carlos Litwiñiuk Zarza  
     */
-    @RequestMapping(value = "/codigoError", method = RequestMethod.GET)
+    @GetMapping(value = "/codigoError")
     public ModelAndView ofertaError(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("RecepcionistaValidador");
         modelview.getModelMap().addAttribute("codigoError", "El código no es correcto.");
@@ -247,7 +248,7 @@ public class RecepcionistaController {
     * @return Vista de login
     * @author Carlos Litwiñiuk Zarza      
     */
-    @RequestMapping(value = "/codigoValidado", method = RequestMethod.GET)
+    @GetMapping(value = "/codigoValidado")
     public ModelAndView ofertaValidada(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("RecepcionistaValidador");
         modelview.getModelMap().addAttribute("codigoValidado", "El código es correcto.");

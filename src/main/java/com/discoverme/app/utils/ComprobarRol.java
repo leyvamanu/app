@@ -29,6 +29,7 @@ public class ComprobarRol {
             modelview = new ModelAndView("login");
             modelview.getModelMap().addAttribute("error", "Acceso denegado.");
         }
+        System.out.println("comprobarrrrrrrrrrrrr");
         return modelview;
     }
     

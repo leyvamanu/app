@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,7 +32,7 @@ public class CamareroController {
      * @param response
      * @return 
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView index(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("CamareroInicio");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
@@ -47,7 +48,7 @@ public class CamareroController {
     * @return recepcionistaValidador
     * @author Carlos Litwiñiuk  
     */
-    @RequestMapping(value = "/ofertaValidador", method = RequestMethod.POST)
+    @PostMapping(value = "/ofertaValidador")
     public String validadar(@RequestParam(value = "codigo", required = true) String codigo, 
                         HttpServletRequest request,HttpServletResponse response){
         String redirect = null;
@@ -67,7 +68,7 @@ public class CamareroController {
     * @return Vista de login
     * @author Carlos Litwiñiuk Zarza  
     */
-    @RequestMapping(value = "/codigoError", method = RequestMethod.GET)
+    @GetMapping(value = "/codigoError")
     public ModelAndView ofertaError(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("CamareroInicio");
         modelview.getModelMap().addAttribute("codigoError", "El código no es correcto.");
@@ -81,7 +82,7 @@ public class CamareroController {
     * @return Vista de login
     * @author Carlos Litwiñiuk Zarza      
     */
-    @RequestMapping(value = "/codigoValidado", method = RequestMethod.GET)
+    @GetMapping(value = "/codigoValidado")
     public ModelAndView ofertaValidada(HttpServletRequest request,HttpServletResponse response){
         ModelAndView modelview = new ModelAndView("CamareroInicio");
         modelview.getModelMap().addAttribute("codigoValidado", "El código es correcto.");
