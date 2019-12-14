@@ -36,7 +36,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public List<Usuario> getUsuariosByRol(Rol rol) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Usuario> theQuery = currentSession.createQuery("from Usuario where rol_id = "+rol.getId(), Usuario.class);
+        Query<Usuario> theQuery = currentSession.createQuery("from Usuario where rol_id = :rol", Usuario.class).setParameter("rol", rol.getId());
         List<Usuario> usuarios = theQuery.getResultList();
         return usuarios;
     }
@@ -44,7 +44,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public List<Usuario> getUsuariosByPerfil(Perfil perfil) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Usuario> theQuery = currentSession.createQuery("from Usuario where perfil_id = "+perfil.getId(), Usuario.class);
+        Query<Usuario> theQuery = currentSession.createQuery("from Usuario where rol_id = :perfil", Usuario.class).setParameter("perfil", perfil.getId());
         List<Usuario> usuarios = theQuery.getResultList();
         return usuarios;
     }

@@ -51,7 +51,7 @@ public class ExperienciaRepositoryImpl implements ExperienciaRepository {
     @Override
     public Experiencia getExperienciaByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Experiencia> theQuery = currentSession.createQuery("from Experiencia where nombre = " + nombre, Experiencia.class);
+        Query<Experiencia> theQuery = currentSession.createQuery("from Experiencia where nombre = :nombre",Experiencia.class).setParameter("nombre", nombre);
         Experiencia experiencia = theQuery.getSingleResult();
         return experiencia;
     }
@@ -59,7 +59,7 @@ public class ExperienciaRepositoryImpl implements ExperienciaRepository {
     @Override
     public List<Experiencia> getExperienciaByUsuario(Usuario usuario) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Experiencia> theQuery = currentSession.createQuery("from Usuario where uduario_id = "+usuario.getId(), Experiencia.class);
+        Query<Experiencia> theQuery = currentSession.createQuery("from Experiencia where usuario_id = :usuario",Experiencia.class).setParameter("usuario", usuario);
         List<Experiencia> experiencias = theQuery.getResultList();
         return experiencias;
     }

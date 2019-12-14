@@ -101,6 +101,11 @@ public class HuespedRestController {
         return experienciaService.getAllExperiencias();
     }
 
+    @GetMapping("/experiencias/{usuario}")
+    public List<Experiencia> getExperienciaByUsuario(@PathVariable String usuario) {
+        return experienciaService.getExperienciaByUsuario(usuarioService.getUsuarioById(usuario));
+    }    
+
     @GetMapping("/servicios")
     public List<Servicio> getServicios() {
         return servicioService.getAllServicios();

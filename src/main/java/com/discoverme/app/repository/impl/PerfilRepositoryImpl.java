@@ -32,7 +32,7 @@ public class PerfilRepositoryImpl implements PerfilRepository {
     @Override
     public Perfil getPerfilByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Perfil> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Perfil.class);
+        Query<Perfil> theQuery = currentSession.createQuery("from Perfil where nombre = :nombre",Perfil.class).setParameter("nombre", nombre);
         Perfil perfil = theQuery.getSingleResult();
         return perfil;
     }

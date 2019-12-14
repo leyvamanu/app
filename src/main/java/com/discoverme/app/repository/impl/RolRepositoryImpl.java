@@ -1,7 +1,6 @@
 package com.discoverme.app.repository.impl;
 
 import com.discoverme.app.domain.Rol;
-import com.discoverme.app.domain.Tipo;
 import com.discoverme.app.repository.RolRepository;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class RolRepositoryImpl implements RolRepository {
     @Override
     public Rol getRolByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Rol> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Rol.class);
+        Query<Rol> theQuery = currentSession.createQuery("from Rol where nombre = :nombre",Rol.class).setParameter("nombre", nombre);
         Rol rol = theQuery.getSingleResult();
         return rol;
     }

@@ -34,7 +34,7 @@ public class FotoRepositoryImpl implements FotoRepository {
     @Override
     public Foto getFotoByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Foto> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Foto.class);
+        Query<Foto> theQuery = currentSession.createQuery("from Foto where nombre = :nombre",Foto.class).setParameter("nombre", nombre);
         Foto fotos = theQuery.getSingleResult();
         return fotos;
     }

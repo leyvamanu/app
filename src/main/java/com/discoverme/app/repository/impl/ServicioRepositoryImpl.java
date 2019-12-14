@@ -42,7 +42,7 @@ public class ServicioRepositoryImpl implements ServicioRepository {
     @Override
     public Servicio getServicioByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Servicio> theQuery = currentSession.createQuery("from Servicio where nombre = " + nombre, Servicio.class);
+        Query<Servicio> theQuery = currentSession.createQuery("from Servicio where nombre = :nombre",Servicio.class).setParameter("nombre", nombre);
         Servicio servicio = theQuery.getSingleResult();
         return servicio;
     }

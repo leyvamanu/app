@@ -33,7 +33,7 @@ public class OfertaRepositoryImpl implements OfertaRepository{
     @Override
     public List<Oferta> getOfertasByExperiencia(Experiencia experiencia) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where experiencia = "+ experiencia.getId(), Oferta.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Oferta where experiencia_id = :experiencia",Oferta.class).setParameter("experiencia",  experiencia.getId());
         List<Oferta> ofertas = theQuery.getResultList();
         return ofertas;
     }
@@ -41,7 +41,7 @@ public class OfertaRepositoryImpl implements OfertaRepository{
     @Override
     public Oferta getOfertaByCodigo(String codigo) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where codigo = "+ codigo, Oferta.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Oferta where codigo = :codigo",Oferta.class).setParameter("codigo", codigo);
         Oferta oferta = theQuery.getSingleResult();
         return oferta;
     }
@@ -49,7 +49,7 @@ public class OfertaRepositoryImpl implements OfertaRepository{
     @Override
     public Oferta getOfertaByNombre(String nombre) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Oferta> theQuery = currentSession.createQuery("from Comentario where nombre = "+ nombre, Oferta.class);
+        Query<Oferta> theQuery = currentSession.createQuery("from Oferta where nombre = :nombre",Oferta.class).setParameter("nombre", nombre);
         Oferta oferta = theQuery.getSingleResult();
         return oferta;
     }

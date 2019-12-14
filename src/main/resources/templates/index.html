@@ -1,0 +1,283 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" th:href="@{/iconos/favicon.png}" type="image/png" sizes="32x32">
+        <!-- SEO -->        
+        <meta name="description" content="Cómo aumentar la fidelización del huésped en su estancia. Aumenta el LTV de su hotel. Aumenta el gasto medio del huésped en el hotel..css}" />
+        <title>Aumenta la fidelización en tu hotel</title>
+
+        <!-- CDN Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Estilos-->
+        <link rel="stylesheet" type="text/css" th:href="@{/css/index.css.css}"  />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    </head>
+
+    <body id="principal">
+
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+            <a class="navbar-brand" href="#principal">DiscoverMe</a>
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbar-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbar-1">
+                <ul class="navbar-nav p-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#datos">Datos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="principal">
+            <div class="text-center container">
+                <div class="texto-principal">
+                    <div class="intro-heading text-uppercase">Una aplicación,</div>
+                    <div class="intro-heading text-uppercase">infinitas posibilidades</div>
+                    <div class="intro-subt">Conoce los gustos de tus huéspedes y hazle vivir una experiencia única!</div>
+
+                    <a class="btn btn-primary btn-xl" href="#services">Saber más...</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Servicios -->
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Servicios</h2>
+                        <h3 class="section-subheading text-muted">Con nuestra aplicación, conseguirás aumentar la fidelización de tu cliente a través de nuestros servicios.</h3>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-umbrella-beach fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="service-heading">Experiencias</h4>
+                        <p class="text-muted">Muestra a tu huésped todo lo que puede descubrir en tu ciudad dándole la información que realmente creas oportuna.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-ticket-alt fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="service-heading">Ventas</h4>
+                        <p class="text-muted">Aumenta las ventas a través de la aplicación con técnicas de up-selling y cross-selling.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="far fa-handshake fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="service-heading">Colaboración</h4>
+                        <p class="text-muted">Trabaja de manera colaborativa con empresas de tu entorno para ofrecerle lo mejor a tu huésped.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos -->
+        <section id="datos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Nuestros datos</h2>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <p class="text-muted">123123</p>
+                        <h4 class="service-heading">Experiencias</h4>
+                        <p class="text-muted">Cantidad de experiencias que disponemos.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-muted">324244</p>
+                        <h4 class="service-heading">Apps descargadas</h4>
+                        <p class="text-muted">Número de descargas hechas por los huéspedes.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-muted">123</p>
+                        <h4 class="service-heading">Colaboradores</h4>
+                        <p class="text-muted">Total de colaboradores que se benefician de nuestros servicios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo -->
+        <section class="bg-light" id="demo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Demo</h2>
+                        <h3 class="section-subheading text-muted">Prueba los diferentes perfiles de usuario que tiene nuestra aplicación.</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="/inicio?rol=Administrador">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/director.jpg" alt="director">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">Administrador</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="/inicio?rol=Recepcionista">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/recepcionista.jpg" alt="recepcionista">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">Recepcionista</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="/inicio?rol=Huesped">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/huesped.jpg" alt="huesped">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">Huésped</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="/inicio?rol=Camarero">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/camarero.jpg" alt="camarero">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">Camarero</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="inicio/?rol=Colaborador">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/colaborador.jpg" alt="colaborador">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">Colaborador</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 demo-item">
+                        <a class="demo-link" href="/inicio">
+                            <div class="demo-hover">
+                                <div class="demo-hover-content">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="../img/demo/DiscoverMe.jpg" alt="DiscoverMe">
+                        </a>
+                        <div class="demo-caption">
+                            <h4>Usuario</h4>
+                            <p class="text-muted">DiscoverMe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Contáctanos</h2>
+                        <h3 class="section-subheading text-muted">Mándanos un mensaje y nos pondremos en contacto contigo.</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control" id="name" type="text" placeholder="Nombre empresa" required="required" data-validation-required-message="Por favor, ingrese el nombre de su empresa.">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" id="email" type="email" placeholder="Email" required="required" data-validation-required-message="Por favor, ingrese el email de su empresa.">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" id="phone" type="tel" placeholder="Teléfono" required="required" data-validation-required-message="Por favor, ingrese el número de teléfono de su empresa.">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="message" placeholder="Escribe tu mensaje" required="required" data-validation-required-message="Por favor, ingrese su mensaje."></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="col-md-12">
+                        <span class="copyright">Copyright &copy; DiscoverMe 2019</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <!-- Scripts -->        
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../js/funcionesJquery_index.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

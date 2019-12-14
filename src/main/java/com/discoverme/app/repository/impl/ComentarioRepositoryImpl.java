@@ -33,7 +33,7 @@ public class ComentarioRepositoryImpl implements ComentarioRepository {
     @Override
     public List<Comentario> getComentariosByIdExperiencia(Experiencia experiencia) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<Comentario> theQuery = currentSession.createQuery("from Comentario where experiencia = "+ experiencia.getId(), Comentario.class);
+        Query<Comentario> theQuery = currentSession.createQuery("from Comentario where experiencia_is = :experiencia",Comentario.class).setParameter("experiencia", experiencia.getId());
         List<Comentario> comentarios = theQuery.getResultList();
         return comentarios;
     }

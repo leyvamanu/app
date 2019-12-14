@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <!--Favicon-->
+        <link rel="icon" th:href="@{/iconos/favicon.png}" type="image/png" sizes="32x32">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Administrador</title>
+        <!--CDN-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/bootstrap-extend/880420ae663f7c539971ded33411cdecffcc2134/css/bootstrap-extend.min.css"/>
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" th:href="@{/css/estilos_recepcionista.css}"  />
+    </head>
+    <body>
+        <!--Menú-->
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <a class="nav-brand logo" href="/DiscoverMe/recepcionista/">DiscoverMe</a>
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbar-1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbar-1">
+                <ul class="navbar-nav p-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/DiscoverMe/recepcionista/formularioExperiencia">Crear experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/DiscoverMe/recepcionista/recepcionistaValidador">Validador</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${usuario.nombre}</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/editar">Editar</a>
+                            <a class="dropdown-item" href="/logout">Salir</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--vista inicial del recepcionista-->
+        <div class="container">
+            <div class="col-md-12">
+                <!--Titulo-->                  
+                <div class="container"><br>
+                    <div class="row">
+                        <div class="col-md-12 center-bloc">
+                            <h1>Recepcionista</h1>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+                <!--Cuerpo de la vista inicio Recepcionista-->
+                <div class="container"><br>
+                    <div class="row center-bloc">
+                        <div class="col-md-4 center-bloc">
+                            <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/2"><img class="thumbnail img-responsive" src="/DiscoverMe/resources/iconos/Soltero.png" alt="Soltero"></button></a>
+                            <!--<h1 class="info"></h1>-->
+                            <br>
+                            <h5 class="info">Soltero</h5>
+                        </div>  
+                        <div class="col-md-4 center-bloc">
+                            <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/1"><img class="thumbnail img-responsive grow" src="/DiscoverMe/resources/iconos/Deluxe.png" alt="Deluxe"></button></a>
+                            <!--<h1 class="info"></h1>-->
+                            <br>
+                            <h5 class="info">Deluxe</h5>
+                        </div>
+                        <div class="col-md-4 center-bloc">
+                            <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/5"><img class="thumbnail img-responsive" src="/DiscoverMe/resources/iconos/Familiar.png" alt="Familiar"></button></a>
+                            <!--<h1 class="info"></h1>-->
+                            <br>
+                            <h5 class="info">Familiar</h5>
+                        </div>    
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4 center-bloc">
+                            <div class="center-block">
+                                <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/3"><img class="thumbnail img-responsive" src="/DiscoverMe/resources/iconos/Low_cost.png" alt="Low cost"></button></a>
+                                <!--<h1 class="info"></h1>-->
+                                <br>
+                                <h5 class="info">Low_cost</h5>
+                            </div>
+                        </div>  
+                        <div class="col-md-4 center-bloc">
+                            <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/4"><img class="thumbnail img-responsive" src="/DiscoverMe/resources/iconos/Aventurero.png" alt="Aventurero"></button></a>
+                            <!--<h1 class="info"></h1>-->
+                            <br>
+                            <h5 class="info">Aventurero</h5>
+                        </div>
+                        <div class="col-md-4 center-bloc">
+                            <a href="/DiscoverMe/recepcionista/formularioUsuarioRecepcionista/6"><img class="thumbnail img-responsive" src="/DiscoverMe/resources/iconos/Mayor_de_50.png" alt="Mayor de 50 años"></button></a>
+                            <!--<h1 class="info"></h1>-->
+                            <br>
+                            <h5 class="info">Mayor de 50 años</h5>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>         
+    </body>
+</html>
