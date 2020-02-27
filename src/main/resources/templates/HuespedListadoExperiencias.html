@@ -48,7 +48,8 @@
             </div>
         </nav>   
         <!--Listado-->
-        <c:forEach items="${experiencias}" var="experiencia">
+        <div th:each="experiencia,iterador : ${experiencias}">
+        <!--<c:forEach items="${experiencias}" var="experiencia">-->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -56,16 +57,18 @@
                             <li class="list-group-item actividad">
                                 <div class="media">
                                     <div class="media-left">
+<!--                                        <div th:each="foto,iterador : ${experiencia.fotos}">
                                         <c:forEach items="${experiencia.fotos}" var="foto">
                                             <c:choose>
                                                 <c:when test="${foto.logo==true}">
-                                                    <img src="<spring:url value="/resources/img/${foto.foto}"/>" class="imagen img-thumbnail img-responsive" alt="dibujo" width="150">
+                                                    <img th:src="/img/${foto.foto}" class="imagen img-thumbnail img-responsive" alt="dibujo" width="150">
                                                 </c:when>
                                             </c:choose>
                                         </c:forEach> 
+                                        </div>-->
                                     </div>
                                     <div class="caja-texto media-body">
-                                        <h3>${experiencia.nombre}</h3>
+                                        <h3 th:text="${experiencia.nombre}"></h3>
                                         <h5>
                                             <c:choose>
                                                 <c:when test="${experiencia.fecha_inicio==null}">
@@ -124,7 +127,8 @@
                     </div>
                 </div>
             </div>
-        </c:forEach>
+        <!--</c:forEach>-->
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>       
         <script type="text/javascript" src="/DiscoverMe/resources/js/seleccion.js"></script>

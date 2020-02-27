@@ -126,10 +126,10 @@ public class LoginController {
      * @return Vista de login
      * @author Manuel Leyva
      */
-    @GetMapping(value = "/errorPassword")
+    @GetMapping(value = "/errorPassword") 
     public ModelAndView errorPasswoerd(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelview = new ModelAndView("login");
-        modelview.addObject("usuarioDemo", null);
+        //modelview.addObject("usuarioDemo", null);
         modelview.addObject("error", "Contraseña incorrecta.");
         return modelview;
     }
@@ -146,7 +146,8 @@ public class LoginController {
     public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute("usuario");
         ModelAndView modelview = new ModelAndView("inicio");
-        modelview.addObject("usuarioDemo", null);
+        //System.out.println("-qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq-");
+        //modelview.addObject("usuarioDemo", null);
         modelview.addObject("error", "Contraseña incorrecta.");
         return modelview;
     }
